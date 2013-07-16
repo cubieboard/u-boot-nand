@@ -172,6 +172,8 @@
 #define CONFIG_SYS_MONITOR_LEN		(256 << 10)	/* 256 KiB */
 #define CONFIG_IDENT_STRING			" Allwinner Technology "
 
+#define CONFIG_ENV_IS_NOWHERE 1
+
 #if !defined(CONFIG_ENV_IS_IN_MMC) && !defined(CONFIG_ENV_IS_NOWHERE)
 #define CONFIG_ENV_IS_IN_NAND_SUNXI	    /* we store env in one partition of our nand */
 #endif
@@ -187,18 +189,18 @@
 #define CONFIG_CMD_SAVEENV
 
 #define CONFIG_EXTRA_ENV_SETTINGS \
-	"bootdelay=3\0" \
+	"bootdelay=1\0" \
 	"bootcmd=run setargs_nand boot_normal\0" \
 	"console=ttyS0,115200\0" \
 	"nand_root=/dev/system\0" \
 	"mmc_root=/dev/mmcblk0p7\0" \
 	"init=/init\0" \
 	"loglevel=8\0" \
-	"setargs_nand=setenv bootargs console=${console} root=${nand_root}" \
-	" init=${init} loglevel=${loglevel} partitions=${partitions}\0" \
+    "setargs_nand=mw 41000000 0 10000; fatload nand 0 41000000 uEnv.txt; env import 41000000 10000;" \
+	" setenv bootargs console=${console} root=${root} loglevel=${loglevel} ${extraargs}\0" \
 	"setargs_mmc=setenv bootargs console=${console} root=${mmc_root}" \
 	" init=${init} loglevel=${loglevel} partitions=${partitions}\0" \
-	"boot_normal=sunxi_flash read 40007800 boot;boota 40007800\0" \
+    "boot_normal=fatload nand 0 42000000 ${kernel}; bootm 42000000\0" \
 	"boot_recovery=sunxi_flash read 40007800 recovery;boota 40007800\0" \
 	"boot_fastboot=fastboot\0"
 
