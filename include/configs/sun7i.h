@@ -200,7 +200,7 @@
 	" setenv bootargs console=${console} root=${root} loglevel=${loglevel} ${extraargs}\0" \
 	"setargs_mmc=setenv bootargs console=${console} root=${mmc_root}" \
 	" init=${init} loglevel=${loglevel} partitions=${partitions}\0" \
-    "boot_normal=fatload nand 0 42000000 ${kernel}; bootm 42000000\0" \
+    "boot_normal=fatload nand 0 43000000 script.bin; fatload nand 0 48000000 ${kernel}; bootm 48000000\0" \
 	"boot_recovery=sunxi_flash read 40007800 recovery;boota 40007800\0" \
 	"boot_fastboot=fastboot\0"
 
