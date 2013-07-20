@@ -90,6 +90,9 @@
 #define CONFIG_NAND
 #define CONFIG_NAND_SUNXI
 #define CONFIG_CMD_NAND                         /* NAND support */
+#define CONFIG_CMD_EXT4				/* with this we can access ext4 bootfs in nand */
+#define CONFIG_CMD_EXT2				/* with this we can access ext2 bootfs in nand */
+#define CONFIG_FS_EXT4				/* EXT4 filesystem */
 #define CONFIG_SYS_MAX_NAND_DEVICE      1
 #define CONFIG_SYS_NAND_BASE            0x00
 #define CONFIG_CMD_MEMORY
