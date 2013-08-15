@@ -209,7 +209,8 @@
 	 "setenv bootargs console=${console} root=${nand_root} loglevel=${loglevel} ${extraargs}\0" \
 	"loadscriptbin=ext4load nand 2:0 $scriptbinaddr /boot${scriptbin} || fatload nand 0:0 $scriptbinaddr ${scriptbin}\0" \
 	"loadkernel=ext4load nand 2:0 $kerneladdr /boot${kernel} || fatload nand 0:0 $kerneladdr ${kernel}\0" \
-	"setargs_nand=run loadbootenv loadscriptbin loadkernel\0" \
+	"setmachid=setenv machid 10bb\0" \
+	"setargs_nand=run loadbootenv loadscriptbin loadkernel setmachid\0" \
     	"boot_normal=bootm 48000000\0" \
 	"boot_recovery=sunxi_flash read 40007800 recovery;boota 40007800\0" \
 	"boot_fastboot=fastboot\0"
