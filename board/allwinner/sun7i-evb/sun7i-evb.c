@@ -233,7 +233,7 @@ void set_boot_type_arg(void){
 /* add board specific code here */
 int board_init(void) {
 
-	gd->bd->bi_arch_number = 3893;
+	gd->bd->bi_arch_number = 4283;
 	gd->bd->bi_boot_params = (PHYS_SDRAM_1 + 0x100);
 	serial_init();
 #ifdef DEBUG
@@ -297,7 +297,7 @@ int mmc_get_env_addr(struct mmc *mmc, u32 *env_addr) {
 #ifdef CONFIG_DISPLAY_BOARDINFO
 int checkboard(void)
 {
-	puts("Board: SUN7I-EVB\n");
+	puts("Board: A20-Cubietruck\n");
 	return 0;
 }
 #endif
