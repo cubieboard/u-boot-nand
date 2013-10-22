@@ -297,7 +297,7 @@ int mmc_get_env_addr(struct mmc *mmc, u32 *env_addr) {
 #ifdef CONFIG_DISPLAY_BOARDINFO
 int checkboard(void)
 {
-	puts("Board: A20-Cubietruck\n");
+	puts("Board: A20-Cubieboard2\n");
 	return 0;
 }
 #endif
